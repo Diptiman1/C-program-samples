@@ -1,0 +1,77 @@
+// inside header
+//link.h
+
+#pragma once
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef char DATA;
+
+struct linked_list
+{
+	DATA d;
+
+	struct linked_list *next;
+};
+
+typedef struct linked_list ELEMENT;
+typedef ELEMENT  *LINK;
+
+
+//-----------------------------------------------------
+// inside main c file
+
+#include<stdlib.h>
+#include<stdio.h>
+#include "list.h"
+
+LINK str_to_list(char s[])
+{
+	LINK head = NULL, tail;
+	int i;
+
+	if (s[0] != '\0')
+	{
+		head = (LINK)malloc(sizeof(ELEMENT));
+		head->d = s[0];
+		tail = head;
+		for (i = 1; s[i] != '\0'; ++i)
+		{
+			tail->next = (LINK)malloc(sizeof(ELEMENT));
+			tail = tail->next;
+			tail->d = s[i];
+		}
+		tail->next = NULL;
+
+
+	}
+	return head;
+
+}
+
+void print_list(LINK head)
+{
+	if (head == NULL)
+		printf("NULL");
+	else
+	{
+		printf("%c -->", head->d);
+		print_list(head->next);
+	}
+}
+
+int main()
+{
+	LINK h;
+
+	LINK str_to_list(char[]);
+	void print_list(LINK);
+
+	h = str_to_list("ABC");
+	printf("The resulting list is\n");
+	print_list(h);
+	printf(" \n");
+
+	return 0;
+
+}

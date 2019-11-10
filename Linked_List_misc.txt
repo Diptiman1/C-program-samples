@@ -1,0 +1,118 @@
+/*#include<stdlib.h>
+#include<stdio.h>
+#include<stdint.h>
+#include<ctype.h>
+#include<string.h>
+
+struct Node
+{
+	int data;
+	Node *next;
+};
+
+
+void printList(Node* add)
+{
+	Node *head = add;
+	printf("Values entered are: \n");
+	while (head != NULL)
+	{
+		
+		printf("%d ", head->data);
+		head = head->next;
+	}
+	printf("\n");
+}
+
+int main()
+{
+	int i = 0, n = 0;
+	Node *first = NULL;
+	Node *head = NULL;
+	
+	head = (Node*)malloc(sizeof(int));
+	first = head;
+	printf("Enter the number of values you want to enter \n");
+	scanf("%d", &n);
+	printf("Enter the value for each nodes \n");
+	while (i < n-1)
+	{
+		head->next = (Node*)malloc(sizeof(int));
+		scanf("%d", &head->data);
+		head = head->next;
+		i++;
+	}
+	scanf("%d", &head->data);
+	head->next = NULL;
+	
+	printList(first);
+	
+	
+
+	return 0;
+}*/
+
+
+// Find whether the value is SParse or not(i.e 5 id sparse while 6 is not. no two 1's are consecutive)
+
+/*#include<stdio.h>
+#include<stdlib.h>
+
+
+int main()
+{
+	int n = 0;
+	printf("Enter the no. to check for sparse \n");
+	scanf("%d", &n);
+
+	int x = 0;
+	x = n &(n >> 1);
+
+
+	if (x == 0)  printf("sparse \n");
+	else printf("not sparse \n");
+
+	return 0;
+}*/
+
+
+#include<stdio.h>
+
+int main()
+{
+	//which floor does the egg break
+	int floor_answer = 54;
+
+	int i = 2, j = 0, n = 14; // i is the no. of Eggs left
+	j = n;
+	while (1) {
+		if (n == floor_answer)
+		{
+			printf("Egg breaks at %d \n", n);
+			break;
+		}
+		else if (n < floor_answer)
+		{
+			n = n + (j - 1); j--;
+		}
+		else if (n > floor_answer)
+		{
+			i--;
+			n = n - j + 1;
+			while (1)
+			{
+				if (n == floor_answer)
+				{
+					break;
+				}
+				else if (n < floor_answer)
+				{
+					n++;
+				}
+			}
+		}
+	}
+	
+
+	return 0;
+}

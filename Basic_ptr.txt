@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<cmath>
+#include<stdlib.h>
+#include<stdint.h>
+
+int main()
+{
+int m = 10;
+int n, o;
+int *z;
+
+z = &m;
+
+printf("Pointer: Show the basic declaration of pointer: \n");
+printf("--------------------------------------------------\n");
+printf("Here is m=10, n and o are two integer variable and *z is an integer \n");
+printf("z stores the address of m = %p\n", z);
+printf("*z stores the address of m = %i\n", *z);
+printf("&m is the address of m = %p\n", &m);
+printf("&n stores the address of n = %p\n", &n);
+printf(" &o  stores the address of o = %p\n", &o);
+printf("&z stores the address of z = %p\n", &z);
+
+return 0;
+
+}
+
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+#include<stdio.h>
+#include<cmath>
+#include<stdlib.h>
+#include<stdint.h>
+
+int main()
+{
+	int m = 29;
+	printf("Address of m : %p\n", &m);
+	printf("Value of m : %d\n", m);
+	printf("Now ab is assigned with the address of m.\n\n");
+
+	int *ab = &m;
+	printf("Address of ab : %p\n", ab);
+	printf("Value of ab : %d\n", *ab);
+
+
+	printf("The value of m assigned to 34 now\n\n");
+
+	m = 34;
+	printf("Address of ab : %p\n", ab);
+	printf("Value of ab : %d\n", *ab);
+
+	*ab = 7;
+	printf("\nThe pointer variable ab is assigned with the value 7 now.\n");
+	printf("Address of m : %p\n", &m);
+	printf("Value of m : %d\n", m);
+
+	return 0;
+
+}
+
+
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+
+#include<stdio.h>
+#include<cmath>
+#include<stdlib.h>
+#include<stdint.h>
+
+int main()
+{
+	printf("Pointer : Demonstrate the use of & and * operator : \n");
+	printf("------------------------------------------------------\n");
+	int *ptrm;
+	float *ptrfx;
+	char *ptrcht;
+	int m = 300;
+	float fx = 300.600006;
+	char cht = 'z';
+
+	ptrm = &m;
+	ptrfx = &fx;
+	ptrcht = &cht;
+	printf("Using & operator : \n---------------------- -----\n\n ");
+	printf("address of m = %p\n",&m);
+	printf("address of fx = %p\n", &fx); 
+	printf("address of cht = %p\n\n", &cht); 
+	printf("Using & and * operator : \n---------------------- -----\n\n ");
+	printf("address of m = %d\n", *(&m));
+	printf("address of fx = %f\n", *(&fx));
+	printf("address of cht = %c\n\n", *(&cht));
+	printf("Using only pointer variable : \n---------------------- -----\n\n ");
+	printf("value at address of m = %p\n", ptrm);
+	printf("value at address of fx = %p\n", ptrfx);
+	printf("value at address of cht = %p\n\n", ptrcht);
+	printf("Using only pointer operator :\n---------------------- -----\n\n ");
+	printf("value at address of m = %d\n", *ptrm);
+	printf("value at address of fx = %f\n", *ptrfx);
+	printf("value at address of cht = %c\n\n", *ptrcht);
+
+	return 0;
+
+}

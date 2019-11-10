@@ -1,0 +1,113 @@
+// ------Stack.h----------
+
+#pragma once
+#include<stdio.h>
+#include<stdlib.h>
+
+#define EMPTY   0
+#define	FULL 10000
+
+typedef char	data;
+
+typedef enum { f, t }  boolean;
+
+struct element {
+	data d;
+	struct element *next;
+
+
+};
+
+typedef struct element elem;
+struct stack {
+	int cnt;
+	elem *top;
+};
+
+typedef struct stack	stack;
+
+void initialization(stack *stk);
+void push(data d, stack *stk);
+data pop(stack *stk);
+data top(stack stk);
+boolean empty(const stack *stk);
+boolean full(const stack *stk);
+
+// --------------- stack.c -----------
+
+
+#include<stdio.h>
+#include "stack.h"
+
+
+void initialization(stack *stk)
+{
+	stk->cnt = 0;
+	stk->top = NULL;
+}
+
+void push(data d, stack *stk)
+{
+	element *p;
+
+	p = (element*)malloc(sizeof(elem));
+	p->d = d;
+	p->next = stk->top;
+	stk->top = p;
+	stk->cnt++;
+}
+
+data pop(stack *stk)
+{
+	data d;
+	elem *p;
+	d = stk->top->d;
+	p = stk->top;
+
+	stk->top = stk->top->next;
+	stk->cnt--;
+	free(p);
+	return d;
+
+}
+
+data top(stack *stk)
+{
+	return(stk->top->d);
+}
+
+boolean empty(const stack *stk)
+{
+	return((boolean)(stk->cnt == EMPTY));
+}
+
+boolean full(const stack *stk)
+{
+	return ((boolean)(stk->cnt == FULL));
+}
+
+int main()
+{
+	char str[] = "My name is Joanna Kelley!!";
+	int i;
+	stack s;
+	initialization(&s);
+	printf("In the string %s\n", str);
+	for (i = 0; str[i] != '\0'; ++i)
+	{
+		if (!full(&s))
+			push(str[i], &s);
+	}
+		printf("From the stack: ");
+		
+		while (!empty(&s))
+
+		{
+			putchar(pop(&s));
+		}
+
+		putchar('\n');
+		
+	
+	return 0;
+}

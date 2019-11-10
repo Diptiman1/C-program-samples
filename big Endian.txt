@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdint.h>
+#include<stdlib.h>
+
+int main()
+{
+	
+	int *ptr = (int*)malloc(sizeof(int));
+
+	printf("The address of the pointer is %p\n", ptr);
+	long int ptr1 = (int)ptr;
+	long int ptr2 = (int)ptr;
+	printf("==================Small Endian=======================\n");
+
+	int i = 1;
+	while(1)
+	{
+		
+		*(ptr + i) = (ptr1 & 0xFF);
+		printf("%p    %p\n", (ptr + i), (int *)(*(ptr + i)));
+		ptr1 = ptr1 >> 8;
+		i++;
+
+		if (ptr1 == 0) break;
+	}
+
+	printf("==================Big Endian=========================\n");
+
+	 i = 1;
+	int j = 24;
+	while (1)
+	{
+
+		*(ptr + i) = ((ptr2) & 0xFF000000);
+		printf("%p    %p\n", (ptr + i), (int *)(*(ptr + i) >> 24));
+		//ptr1 = ptr1 >> 8;
+		i++;
+		ptr2 = ptr2 << 8;
+		if (ptr2 == 0) break;
+	}
+
+	free(ptr);
+}
+
